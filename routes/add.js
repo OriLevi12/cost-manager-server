@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Cost = require('../models/cost');
+const Cost = require('../models/costs');
 
 
 /**
