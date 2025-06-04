@@ -1,15 +1,27 @@
+/**
+ * @fileoverview User-related API routes
+ * @requires express
+ * @requires ../models/users
+ * @requires ../models/costs
+ */
+
+// Import required dependencies
 const express = require('express');
 const router = express.Router();
 const User = require('../models/users');
 const Cost = require('../models/costs');
 
 /**
- * @route   GET /api/users/:id
- * @desc    Retrieve user details by ID, including total costs
- * @access  Public
+ * Get user details by ID
+ * @route GET /api/users/:id
+ * @param {string} id.path.required - User ID
+ * @returns {Object} 200 - User details with total costs
+ * @returns {Object} 404 - User not found
+ * @returns {Object} 500 - Server error
  */
 router.get('/:id', async (req, res) => {
   try {
+    // Convert string ID to number
     const userId = parseInt(req.params.id);
 
     // Find user document by ID
