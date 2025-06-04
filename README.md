@@ -4,6 +4,12 @@
 
 This is a RESTful web service built with **Node.js**, **Express**, and **MongoDB (via Mongoose)** for managing and tracking user expenses.
 
+## 👥 Project Owners
+
+This project was developed by:
+- **Ori Levi** - Full Stack Developer
+- **Noam Levi** - Full Stack Developer
+
 ## 🚀 Features
 
 - Add new cost items
@@ -17,6 +23,7 @@ This is a RESTful web service built with **Node.js**, **Express**, and **MongoDB
 - MongoDB Atlas (Mongoose ODM)
 - JSDoc for documentation
 - Postman for testing the API
+- Python + Pytest for automated testing
 
 ## 🛠️ Installation
 
@@ -35,6 +42,24 @@ npm start
 The server will run at:  
 ```
 http://localhost:3000
+```
+
+## 🧪 Testing
+
+The project includes comprehensive test coverage using Python and Pytest. Tests cover:
+- User operations (retrieval, validation)
+- Cost management (addition, validation)
+- Report generation
+- API error handling
+- Data validation
+
+To run the tests:
+```bash
+# Make sure the server is running first
+npm start
+
+# In a new terminal, run the tests
+pytest test_endpoints.py -v
 ```
 
 ## 📬 API Endpoints
@@ -58,6 +83,15 @@ POST /api/add
   "date": "2025-11-05T14:00:00.000Z"
 }
 ```
+
+## 📝 Code Quality
+
+- Comprehensive JSDoc documentation
+- Consistent code style
+- Error handling and validation
+- Automated testing suite
+- Clean and maintainable codebase
+
 ---
 
 Feel free to explore and contribute once the project is completed!
