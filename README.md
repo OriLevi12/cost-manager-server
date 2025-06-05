@@ -1,8 +1,16 @@
 # Cost Manager API
 
-> ⚠️ This project is **still under development** and is not yet fully complete.
-
 This is a RESTful web service built with **Node.js**, **Express**, and **MongoDB (via Mongoose)** for managing and tracking user expenses.
+
+## 🌐 Live Demo
+
+The API is deployed and available at the following endpoints:
+- Development team info: [https://cost-manager-server.onrender.com/api/about](https://cost-manager-server.onrender.com/api/about)
+- Add new cost: [https://cost-manager-server.onrender.com/api/add](https://cost-manager-server.onrender.com/api/add) (POST request)
+- Get monthly report: [https://cost-manager-server.onrender.com/api/report](https://cost-manager-server.onrender.com/api/report)
+- Get user details: [https://cost-manager-server.onrender.com/api/users/:id](https://cost-manager-server.onrender.com/api/users/:id)
+
+Note: POST endpoints need to be tested using tools like Postman or curl.
 
 ## 👥 Project Owners
 
@@ -33,6 +41,17 @@ cd cost-manager-server
 npm install
 ```
 
+### Environment Setup
+
+Create a `.env` file in the root directory with the following variables:
+```env
+MONGO_ORI_NOAM=your_mongodb_connection_string
+```
+
+Replace `your_mongodb_connection_string` with your MongoDB connection string.
+
+Note: The server will run on port 3000 by default. If you need to use a different port, you can set it using the `PORT` environment variable.
+
 ## ▶️ Running the Server
 
 ```bash
@@ -46,12 +65,18 @@ http://localhost:3000
 
 ## 🧪 Testing
 
-The project includes comprehensive test coverage using Python and Pytest. Tests cover:
-- User operations (retrieval, validation)
-- Cost management (addition, validation)
-- Report generation
-- API error handling
-- Data validation
+The project includes automated tests written in Python using the `requests` library. The tests verify all API endpoints using the following test data:
+
+- Test user ID: 123123 (Yossi Einav)
+- Test cost item: "milk 9" in the "food" category with sum of 8
+- Test date: June 2025
+- Expected team members: Ori Levi and Noam Levi
+
+The tests verify:
+- Adding new cost items (`/api/add`)
+- Retrieving monthly reports (`/api/report`)
+- Getting user details and total costs (`/api/users/:id`)
+- Fetching development team information (`/api/about`)
 
 To run the tests:
 ```bash
@@ -61,6 +86,8 @@ npm start
 # In a new terminal, run the tests
 pytest test_endpoints.py -v
 ```
+
+Note: The tests assume the existence of a user with ID 123123 in the database. Make sure this user exists before running the tests.
 
 ## 📬 API Endpoints
 
@@ -73,15 +100,17 @@ pytest test_endpoints.py -v
 
 ## 🧪 Example Request
 
-```json
-POST /api/add
-{
-  "description": "pizza",
-  "category": "food",
-  "userid": 123123,
-  "sum": 50,
-  "date": "2025-11-05T14:00:00.000Z"
-}
+```bash
+# Using curl
+curl -X POST https://cost-manager-server.onrender.com/api/add \
+  -H "Content-Type: application/json" \
+  -d '{
+    "description": "pizza",
+    "category": "food",
+    "userid": 123123,
+    "sum": 50,
+    "date": "2025-11-05T14:00:00.000Z"
+  }'
 ```
 
 ## 📝 Code Quality
@@ -94,4 +123,4 @@ POST /api/add
 
 ---
 
-Feel free to explore and contribute once the project is completed!
+Feel free to explore and contribute to the project!
